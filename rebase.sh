@@ -5,7 +5,8 @@ last_id=""
 save_dir=$(mktemp -d "/tmp/$name.XXXXXX")
 cd $save_dir || exit 1
 for layer_id in $@; do
-    new_id=$(read -n 16 </dev/urandom | shasum -a 256 - | sed 's/\s*-$//')
+    #layer_id=$(sed 's/ //g' <<<$layer_id)
+    new_id=$(read -n 16 </dev/urandom | shasum -a 256 - | sed 's/\s*-$//' | sed 's/ //g')
     echo "Creating new layer $new_id based on $layer_id"
     echo "Saving old layer ($layer_id)..."
     docker save $layer_id | tar xv
