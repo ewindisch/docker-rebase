@@ -1,0 +1,23 @@
+Rebase docker images
+--------------------
+
+Usage: ./rebase.sh <tag> [layers...]
+
+Example:
+
+The following example creates a new image called 'regibusy' which contains
+the full registry image, then overlays the contents of the busybox image.
+
+$ docker pull busybox
+$ docker pull registry
+$ ./rebase.sh regibusy $(./history registry) $(./history busybox)
+
+
+Utilities
+---------
+
+# History
+
+Usage: ./history <image>
+
+The history command creates a clean and sorted list of layers for an image. This is useful for stacking images.
