@@ -10,7 +10,7 @@ the full registry image, then overlays the contents of the busybox image.
 
 $ docker pull busybox
 $ docker pull registry
-$ ./rebase.sh regibusy $(./history registry) $(./history busybox)
+$ ./rebase.sh regibusy $(./history.sh registry) $(./history.sh busybox)
 
 
 Utilities
@@ -18,6 +18,6 @@ Utilities
 
 # History
 
-Usage: ./history <image>
+Usage: ./history.sh <image>
 
 The history command creates a clean and sorted list of layers for an image. This is useful for stacking images.
